@@ -1,0 +1,166 @@
+#root {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Animaciones */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0) scaleY(1);
+  }
+  50% {
+    transform: translateY(-5px) scaleY(1.05);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 20px 5px rgba(255,204,0,0.7);
+  }
+  100% {
+    box-shadow: 0 0 30px 10px rgba(255,204,0,0.9);
+  }
+}
+
+/* Estilos del faro */
+.lighthouse-tower {
+  background: linear-gradient(to right, #f59e0b, #fbbf24);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.lighthouse-top {
+  background: linear-gradient(to bottom, #f97316, #ea580c);
+}
+
+.light-beam {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 120vh solid rgba(255, 255, 150, 0.15);
+  transform-origin: 50% 100%;
+  transition: transform 0.1s ease-out;
+  filter: blur(1px);
+}
+
+.light-effect {
+  background: radial-gradient(circle, rgba(255, 255, 150, 0.6) 0%, rgba(255, 255, 150, 0.2) 40%, transparent 70%);
+  transition: all 0.1s ease-out;
+}
+
+.water {
+  background: linear-gradient(to bottom,
+      rgba(12, 74, 110, 0.2) 0%,
+      rgba(12, 74, 110, 0.6) 20%,
+      rgba(12, 74, 110, 0.8) 50%,
+      #0c4a6e 100%);
+  animation: wave 4s infinite ease-in-out;
+  transform-origin: center bottom;
+  margin-bottom: -10px; /* Esto evitará el espacio negro */
+  min-height: 40px; /* Asegura una altura mínima */
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  animation: twinkle 3s infinite alternate;
+  animation-delay: calc(var(--delay) * 1s);
+}
+
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  animation: float 15s infinite ease-in-out;
+  animation-delay: calc(var(--delay) * 3s);
+  backdrop-filter: blur(2px);
+  z-index: 5;
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  filter: blur(1px);
+}
+
+.cloud::before {
+  width: 65%;
+  height: 150%;
+  top: -35%;
+  left: 8%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.cloud::after {
+  width: 55%;
+  height: 130%;
+  top: -25%;
+  right: 12%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.cursor-light {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(255, 255, 150, 0.8) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1000;
+  transition: all 0.1s ease-out;
+}
+
+.lighthouse-light {
+  animation: glow 2s infinite alternate;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Estilos para las estrellas especiales */
+.star-special {
+  position: relative;
+  transform-origin: center;
+  overflow: visible;
+}
+
+.star-shape {
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%,
+    50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
+  );
+}
+
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}

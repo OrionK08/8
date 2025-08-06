@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faro Interactivo React</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            animation: {
+              'pulse-slow': 'pulse 6s infinite cubic-bezier(0.4, 0, 0.6, 1)',
+              'twinkle': 'twinkle 3s infinite alternate',
+              'wave': 'wave 4s infinite ease-in-out',
+              'glow': 'glow 2s infinite alternate',
+            },
+            keyframes: {
+              twinkle: {
+                '0%': { opacity: '0.3', transform: 'scale(0.8)' },
+                '100%': { opacity: '1', transform: 'scale(1.2)' },
+              },
+              wave: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              glow: {
+                '0%': { boxShadow: '0 0 20px 5px rgba(255,204,0,0.7)' },
+                '100%': { boxShadow: '0 0 30px 10px rgba(255,204,0,0.9)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
