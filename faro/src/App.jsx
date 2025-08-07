@@ -72,10 +72,17 @@ function App() {
   const mensajeSecreto2Ref = useRef(null);
   const mensajeSecreto3Ref = useRef(null);
   
-  // Estados para controlar la visibilidad de los mensajes
+  // Estados para controlar la visibilidad de los mensajes con valores iniciales explícitamente falsos
   const [mostrarMensaje1, setMostrarMensaje1] = useState(false);
   const [mostrarMensaje2, setMostrarMensaje2] = useState(false);
   const [mostrarMensaje3, setMostrarMensaje3] = useState(false);
+  
+  // Asegurarnos de que los mensajes estén ocultos al cargar
+  useEffect(() => {
+    setMostrarMensaje1(false);
+    setMostrarMensaje2(false);
+    setMostrarMensaje3(false);
+  }, []);
   
   // Referencia para los timeouts
   const cursorTimeoutRef = useRef(null);
@@ -249,9 +256,9 @@ function App() {
         */}
         <div 
           ref={estrellaEspecial1Ref} 
-          className="absolute top-[15%] left-[25%] z-10 cursor-pointer w-12 h-12 flex items-center justify-center animate-latido"
+          className="absolute top-[15%] left-[25%] z-10 w-8 h-8 flex items-center justify-center animate-latido"
         >
-          <div className="star-special w-12 h-12 bg-white rounded-full shadow-[0_0_15px_5px_rgba(255,255,255,0.6)]">
+          <div className="star-special w-1 h-1 bg-white rounded-full shadow-[0_0_15px_5px_rgba(255,255,255,0.6)]">
             <div className="absolute inset-0 star-shape bg-white"></div>
           </div>
         </div>
@@ -259,9 +266,9 @@ function App() {
         {/* Estrella especial #2 en el cielo con interacción */}
         <div 
           ref={estrellaEspecial2Ref} 
-          className="absolute top-[30%] left-[60%] z-10 cursor-pointer w-12 h-12 flex items-center justify-center animate-latido"
+          className="absolute top-[30%] left-[60%] z-10 w-8 h-8 flex items-center justify-center animate-latido"
         >
-          <div className="star-special w-12 h-12 bg-white rounded-full shadow-[0_0_15px_5px_rgba(255,255,255,0.6)]">
+          <div className="star-special w-1 h-1 bg-white rounded-full shadow-[0_0_15px_5px_rgba(255,255,255,0.6)]">
             <div className="absolute inset-0 star-shape bg-white"></div>
           </div>
         </div>
@@ -269,9 +276,9 @@ function App() {
         {/* Estrella especial #3 en el cielo con interacción */}
         <div 
           ref={estrellaEspecial3Ref} 
-          className="absolute top-[10%] left-[80%] z-10 cursor-pointer w-12 h-12 flex items-center justify-center animate-latido"
+          className="absolute top-[10%] left-[80%] z-10 w-8 h-8 flex items-center justify-center animate-latido"
         >
-          <div className="star-special w-12 h-12 bg-white rounded-full shadow-[0_0_15px_5px_rgba(255,255,255,0.6)]">
+          <div className="star-special w-1 h-1 bg-white rounded-full shadow-[0_0_15px_5px_rgba(255,255,255,0.6)]">
             <div className="absolute inset-0 star-shape bg-white"></div>
           </div>
         </div>
@@ -280,10 +287,13 @@ function App() {
         <div 
           id="mensaje-secreto-1" 
           ref={mensajeSecreto1Ref}
-          className={`mensaje-secreto-1 fixed top-8 right-8 text-white py-8 px-10 rounded-3xl text-xl font-medium max-w-sm text-center z-[2000] ${mostrarMensaje1 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-5 scale-90'} pointer-events-none transition-all duration-1000 efecto-hover`}
+          className={`mensaje-secreto-1 fixed top-8 right-8 text-white py-8 px-10 rounded-3xl text-xl font-medium max-w-sm text-center z-[2000] ${mostrarMensaje1 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-5 scale-90 hidden'} pointer-events-none transition-all duration-1000 efecto-hover`}
         >
-          <div className="text-5xl mb-4 animate-latido">🌟</div>
-          <p className="leading-relaxed">Las estrellas brillan más cuando estás cerca</p>
+          <div className="text-5xl mb-4 animate-latido">🌍</div>
+          <p className="leading-relaxed">Eres mi geografía favorita, el lugar donde mis pasos encuentran sentido. 
+            En estos ocho meses he descubierto que el amor no es solo mirarse, sino mirar juntos hacia la misma estrella y 
+            saber que estamos construyendo algo eterno.
+          </p>
           <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-amber-600/20 rounded-3xl animate-pulso"></div>
         </div>
         
@@ -291,10 +301,13 @@ function App() {
         <div 
           id="mensaje-secreto-2" 
           ref={mensajeSecreto2Ref}
-          className={`mensaje-secreto-1 fixed top-8 left-8 text-white py-8 px-10 rounded-3xl text-xl font-medium max-w-sm text-center z-[2000] ${mostrarMensaje2 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-5 scale-90'} pointer-events-none transition-all duration-1000 efecto-hover`}
+          className={`mensaje-secreto-1 fixed top-8 left-8 text-white py-8 px-10 rounded-3xl text-xl font-medium max-w-sm text-center z-[2000] ${mostrarMensaje2 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-5 scale-90 hidden'} pointer-events-none transition-all duration-1000 efecto-hover`}
         >
-          <div className="text-5xl mb-4 animate-latido">🌊</div>
-          <p className="leading-relaxed">Como el mar que nunca deja de moverse, así es mi admiración por ti</p>
+          <div className="text-5xl mb-4 animate-latido">❤️‍🔥</div>
+          <p className="leading-relaxed">Como la luz que emerge de esta torre en la noche, tú iluminas cada rincón de mi existencia. 
+            Eres la palabra que faltaba en mi verso, la melodía que mi corazón esperaba componer. 
+            En estos meses has logrado que cada amanecer sea una promesa nueva.
+            </p>
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-600/20 rounded-3xl animate-pulso"></div>
         </div>
         
@@ -302,10 +315,13 @@ function App() {
         <div 
           id="mensaje-secreto-3" 
           ref={mensajeSecreto3Ref}
-          className={`mensaje-secreto-1 fixed bottom-8 right-8 text-white py-8 px-10 rounded-3xl text-xl font-medium max-w-sm text-center z-[2000] ${mostrarMensaje3 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-90'} pointer-events-none transition-all duration-1000 efecto-hover`}
+          className={`mensaje-secreto-1 fixed bottom-8 right-8 text-white py-8 px-10 rounded-3xl text-xl font-medium max-w-sm text-center z-[2000] ${mostrarMensaje3 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-90 hidden'} pointer-events-none transition-all duration-1000 efecto-hover`}
         >
           <div className="text-5xl mb-4 animate-latido">🔥</div>
-          <p className="leading-relaxed">Si funciono esta monda, ¡el fuego de la pasión nunca se apaga!</p>
+          <p className="leading-relaxed">Si pudiera detener el tiempo, elegiría los momentos que hacemos el amor y repertirlo una y otra vez.
+            Eres mi refugio en la tormenta,mi aventura en la calma, mi hogar en cualquier lugar del mundo. 
+            Ocho meses que se sienten como el comienzo de nuestra historia infinita.
+          </p>
           <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-orange-600/20 rounded-3xl animate-pulso"></div>
         </div>
 
